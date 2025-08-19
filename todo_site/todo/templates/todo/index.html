@@ -1,0 +1,85 @@
+
+{% extends 'todo/layout/base.html' %}
+
+{% block title %}Todo List{% endblock %}
+
+{% block content %}
+
+<!--  for alert message-->
+  {% if messages %}
+  <script>
+  {% for message in messages %}
+     Swal.fire({
+        icon: "{% if message.tags %}{{ message.tags }}{% else %}info{% endif %}",
+        title: "{{ message }}",
+        showConfirmButton: false,
+        timer: 2000
+      });
+  {% endfor %}
+  </script>
+  {% endif %}
+{% if messages %}
+  <script>
+    {% for message in messages %}
+      Swal.fire({
+        icon: "{% if message.tags %}{{ message.tags }}{% else %}info{% endif %}",
+        title: "{{ message|escapejs }}",
+        showConfirmButton: false,
+        timer: 2000
+      });
+    {% endfor %}
+  </script>
+{% endif %}
+
+
+
+
+  <div class="row center">
+    <h1 class="text-center"><i>__TODO LIST__</i></h1>
+    <hr />
+  </div>
+
+  <div class="row">
+
+    <div class="col-md-8">
+
+      <div class="row card-container">
+      {% for i in list %}
+        <div class="col-md-4">
+          <div class="card">
+            <h4 class="center"><b>{{i.title}}</b>
+            </h4>
+            <hr/>
+            {{i.date}}
+            <hr/>
+            {{i.details}}
+            <hr/>
+        <form id="delete-form-{{ i.id }}" action="/todo/del/{{ i.id }}" method="POST" style="padding-right:4%; padding-bottom:3%;">
+        {% csrf_token %}
+        <button type="button" class="btn btn-danger" style="float:right;" onclick="confirmDelete('{{ i.id }}')">
+          <span class="glyphicon glyphicon-trash"></span> &nbsp; Remove
+        </button>
+        </form>
+
+      </div>
+        </div>
+      {% endfor%}
+      </div>
+
+    </div>
+    <div class="col-md-1"> </div>
+    <div class="col-md-3" >
+      <div  class="submit_form">
+      <form  id="create-form" method="POST">
+        {% csrf_token %}
+        {{forms}}
+        <center>
+        <input type="submit" class="btn btn-default" onclick="createItemAlert()"  value="submit" />
+      </center>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

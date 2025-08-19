@@ -1,0 +1,53 @@
+.main-layout{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.submit_form {
+    border: 2px solid #dfd9d9;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.submit_form form {
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    gap:5px;
+}
+
+.submit_form input , .submit_form textarea{
+  width:100%;
+}
+
+.submit_form input[type="submit"] {
+    background-color: blue;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.submit_form input[type="submit"]:hover {
+    background-color: darkblue; /* hover effect */
+}
+
+
+
+.card-container .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid #c2c2c2;
+    padding: 18px;
+    background-color: #fafafa;
+    margin-top: 19px;
+}
+
+.card-container .card hr {
+    border: 0;
+    border-top: 1px solid #e3e3e3;
+    margin: 10px 0;           /* spacing */
+}

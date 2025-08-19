@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+ {% load static %}
+  <meta charset="utf-8">
+  <title>{{title}}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+  <link rel="stylesheet" type="text/css" href="{% static 'todo/assets/css/style.css' %}">
+</head>
+<body>
+ <!-- Header -->
+  <header class="navbar navbar-inverse">
+    <div class="container">
+      <a class="navbar-brand" href="/">TODO App</a>
+      <ul class="nav navbar-nav">
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container-fluid main-layout">
+    {% block content %}
+    <!-- Page-specific content goes here -->
+    {% endblock %}
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-center" style="background:#222; color:#fff; padding:10px; margin-top:auto;">
+      <p>&copy; {{ year }} TODO App. All rights reserved.</p>
+  </footer>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <script>
+function confirmDelete(id) {
+  Swal.fire({
+    title: "Are you sure?",
+    text: "This action cannot be undone.",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#d33",
+    cancelButtonColor: "#3085d6",
+    confirmButtonText: "Yes, delete it!"
+  }).then((result) => {
+    if (result.isConfirmed) {
+      document.getElementById("delete-form-" + id).submit();
+    }
+  });
+}
+</script>
+<script>
+function createItemAlert() {
+  Swal.fire({
+    title: "Create Task?",
+    text: "Do you want to add this task?",
+    icon: "question",
+    showCancelButton: true,
+    confirmButtonColor: "#28a745",
+    cancelButtonColor: "#6c757d",
+    confirmButtonText: "Yes, add it!"
+  }).then((result) => {
+    if (result.isConfirmed) {
+      document.getElementById("create-form").submit();
+    }
+  });
+}
+</script>
+</body>
+</html>
