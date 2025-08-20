@@ -1,0 +1,70 @@
+{
+  "country": "India",
+  "date": "2025-08-19",
+  "states_weather": [
+    {
+      "state": "Andhra Pradesh",
+      "capital": "Amaravati",
+      "temperature": { "min": 26, "max": 34, "unit": "°C" },
+      "condition": "Sunny",
+      "humidity": 68,
+      "wind": { "speed": 14, "direction": "SE", "unit": "km/h" }
+    },
+    {
+      "state": "Arunachal Pradesh",
+      "capital": "Itanagar",
+      "temperature": { "min": 20, "max": 29, "unit": "°C" },
+      "condition": "Light Rain",
+      "humidity": 82,
+      "wind": { "speed": 10, "direction": "E", "unit": "km/h" }
+    },
+    {
+      "state": "Assam",
+      "capital": "Dispur",
+      "temperature": { "min": 25, "max": 32, "unit": "°C" },
+      "condition": "Cloudy",
+      "humidity": 78,
+      "wind": { "speed": 12, "direction": "NE", "unit": "km/h" }
+    },
+    {
+      "state": "Bihar",
+      "capital": "Patna",
+      "temperature": { "min": 27, "max": 35, "unit": "°C" },
+      "condition": "Humid",
+      "humidity": 75,
+      "wind": { "speed": 11, "direction": "NW", "unit": "km/h" }
+    },
+    {
+      "state": "Chhattisgarh",
+      "capital": "Raipur",
+      "temperature": { "min": 26, "max": 34, "unit": "°C" },
+      "condition": "Thunderstorms",
+      "humidity": 80,
+      "wind": { "speed": 16, "direction": "S", "unit": "km/h" }
+    },
+    {
+      "state": "Delhi",
+      "capital": "New Delhi",
+      "temperature": { "min": 28, "max": 37, "unit": "°C" },
+      "condition": "Hot and Dry",
+      "humidity": 52,
+      "wind": { "speed": 20, "direction": "W", "unit": "km/h" }
+    },
+    {
+      "state": "Goa",
+      "capital": "Panaji",
+      "temperature": { "min": 26, "max": 32, "unit": "°C" },
+      "condition": "Rain Showers",
+      "humidity": 85,
+      "wind": { "speed": 14, "direction": "SW", "unit": "km/h" }
+    },
+    {
+      "state": "Gujarat",
+      "capital": "Gandhinagar",
+      "temperature": { "min": 29, "max": 38, "unit": "°C" },
+      "condition": "Hot",
+      "humidity": 50,
+      "wind": { "speed": 18, "direction": "NW", "unit": "km/h" }
+    }
+  ]
+}

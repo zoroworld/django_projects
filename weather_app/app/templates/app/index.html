@@ -1,0 +1,31 @@
+{% extends 'app/layout/base.html' %}
+
+{% block title %}Weather forecast{% endblock %}
+
+{% block content %}
+
+<h1 class="mb-4 mt-4 text-center">Weather in {{ weather.country }} ({{ weather.date }})</h1>
+
+<div class="weather-contain">
+    <div class="row">
+        {% for state in weather.states_weather %}
+        <div class="col-md-4 mb-3">
+        <div class="card shadow-sm h-100 text-bg-dark p-3">
+            <div class="card-body">
+                <h5 class="card-title">
+                    {{ state.state }} <small class="text-muted">({{ state.capital }})</small>
+                </h5>
+                <p class="card-text">
+                    <b>Condition:</b> {{ state.condition }} <br>
+                    <b>Temperature:</b> {{ state.temperature.min }}{{ state.temperature.unit }} – {{ state.temperature.max }}{{ state.temperature.unit }} <br>
+                    <b>Humidity:</b> {{ state.humidity }}% <br>
+                    <b>Wind:</b> {{ state.wind.speed }} {{ state.wind.unit }} {{ state.wind.direction }}
+                </p>
+            </div>
+        </div>
+    </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
