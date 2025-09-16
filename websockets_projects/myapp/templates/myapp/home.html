@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Realtime WebSocket Test</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.1/dist/chart.umd.min.js"></script>
+</head>
+<style>
+  #chart {
+    width: 600px !important;
+    height: 450px !important;
+  }
+</style>
+<body>
+    <h1>Realtime WebSocket Updates</h1>
+<!--    <ul id="messages"></ul>-->
+    <canvas id="chart" width="400" height="200"></canvas>
+
+    <script>
+        const socket = new WebSocket('ws://' + window.location.host + '/ws/somepath/');
+        const messagesList = document.getElementById("messages");
+
+        // Chart.js setup
+        let ctx = document.getElementById("chart").getContext("2d");
+        let chart = new Chart(ctx, {
+            type: "bar",
+            data: {
+                labels: ["A","B","C","D"],   // will fill from WebSocket
+                datasets: []
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        socket.onopen = function() {
+            console.log("WebSocket connected!");
+        };
+
+        socket.onmessage = function(event) {
+            const data = JSON.parse(event.data);
+            console.log("Message from server:", data);
+
+            // show messages in list
+            // const li = document.createElement("li");
+            // li.textContent = data.message;
+            // messagesList.appendChild(li);
+
+            // assume server sends: { "label": "Update 1", "value": 42 }
+            // if (data.label && data.value !== undefined) {
+            //     chart.data.labels.push(data.label);
+            //     chart.data.datasets[0].data.push(data.value);
+            //     chart.update(); // redraw chart
+            // }
+            chart.data.datasets = [{
+                label: data.label,
+                backgroundColor: "#79AEC8",
+                borderColor: "#417690",
+                data: data.value
+            }];
+
+            chart.update();
+
+        };
+
+        socket.onclose = function() {
+            console.log("WebSocket disconnected");
+        };
+    </script>
+</body>
+</html>
