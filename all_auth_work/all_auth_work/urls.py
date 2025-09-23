@@ -23,5 +23,8 @@ urlpatterns = [
     # path('', include('digest_authentication.urls')),
     # path('', include('bearer_jwt_token.urls')),
     # path('', include('bearer_token.urls')),
-    path('', include('api_key.urls')),
+    # path('', include('api_key.urls')),
+    # path('', include('Oauth.urls')),
+    # path('', include('cookie_based_server_session.urls')),
+      path('', include('otp.urls')),
 ]
