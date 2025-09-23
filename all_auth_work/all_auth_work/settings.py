@@ -38,7 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'basic_authentication',
+    'bearer_jwt_token',
+    'api_key',
+    'bearer_token',
     'rest_framework',
+    'rest_framework.authtoken',
+    'rest_framework_api_key'
 ]
 
 MIDDLEWARE = [
@@ -127,7 +132,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Enable BasicAuthentication in settings.py:
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.BasicAuthentication',
+        # 'rest_framework.authentication.BasicAuthentication',
+          'rest_framework_simplejwt.authentication.JWTAuthentication',
+        # 'rest_framework.authentication.TokenAuthentication',
+        #   'bearer_token.token_bearer_convert.BearerTokenAuthentication'
     ],
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',

@@ -20,5 +20,8 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('', include('basic_authentication.urls')),
-    path('', include('digest_authentication.urls')),
+    # path('', include('digest_authentication.urls')),
+    # path('', include('bearer_jwt_token.urls')),
+    # path('', include('bearer_token.urls')),
+    path('', include('api_key.urls')),
 ]
