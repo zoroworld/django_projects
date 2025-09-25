@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  django-web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - caching-redis
+      - caching-memcached
+    environment:
+      - REDIS_HOST=caching-redis
+      - MEMCACHED_HOST=caching-memcached  # add memcached host
+
+  caching-redis:
+    image: "redis:7-alpine"
+    ports:
+      - "6379:6379"
+
+  caching-memcached:
+    image: "memcached:alpine"
+    container_name: caching-memcached
+    ports:
+      - "11211:11211"
